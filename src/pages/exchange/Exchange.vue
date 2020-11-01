@@ -72,13 +72,13 @@
                                 </router-link>
                             </span>
                         </div>
-                        <div class="mask" v-show="isLogin&&!member.realName">
-                            <span>请先
-                                <router-link to="/uc/safe">
-                                    <span style="color:#3399ff;">实名认证</span>
-                                </router-link>
-                            </span>
-                        </div>
+                        <!--<div class="mask" v-show="isLogin&&!member.realName">-->
+                            <!--<span>请先-->
+                                <!--<router-link to="/uc/safe">-->
+                                    <!--<span style="color:#3399ff;">实名认证</span>-->
+                                <!--</router-link>-->
+                            <!--</span>-->
+                        <!--</div>-->
                         <div class="trade_menu">
                             <ul>
                                 <template v-for="(item, index) in btnList">
@@ -758,7 +758,7 @@ export default {
             // sliderBuyStopPercent: 0,
             // sliderSellStopPercent: 0,
             // memberRate: 0, //用户身份，用于是否允许开启BHB抵扣手续费
-            // // userRealVerified: false, //是否实名认证
+             userRealVerified: false, //是否实名认证
             // collecRequesting: false,
             // currentCoinIsFavor: false,
             // isUseBHB: false, //是否试用BHB抵扣手续费
@@ -1664,13 +1664,13 @@ export default {
         // this.getPlate();
         // // this.getPlateFull();
         // this.getTrade();
-        // if (this.isLogin) {
-        //   // this.getFavor();
-        //   // this.getMember(); //获取是否实名认证
-        //   this.getWallet();
-        //   this.getCurrentOrder();
-        //   this.getHistoryOrder();
-        // }
+        if (this.isLogin) {
+          // this.getFavor();
+          this.getMember(); //获取是否实名认证
+          this.getWallet();
+          this.getCurrentOrder();
+          this.getHistoryOrder();
+        }
         // // this.setback();
     },
     methods: {
@@ -1774,20 +1774,20 @@ export default {
             //       }
             //     });
         },
-        // getMember() {
-        //   //获取个人安全信息
-        //   this.$http
-        //     .post(this.host + "/uc/approve/security/setting")
-        //     .then(response => {
-        //       let resp = response.body;
-        //       if (resp.code == 0) {
-        //         this.user = resp.data;
-        //         this.userRealVerified = resp.data.realVerified; //0,1
-        //       } else {
-        //         this.$Message.error(this.$t("common.logintip"));
-        //       }
-        //     });
-        // },
+        getMember() {
+          //获取个人安全信息
+          this.$http
+            .post(this.host + "/uc/approve/security/setting")
+            .then(response => {
+              let resp = response.body;
+              if (resp.code == 0) {
+                this.user = resp.data;
+                this.userRealVerified = resp.data.realVerified; //0,1
+              } else {
+                this.$Message.error(this.$t("common.logintip"));
+              }
+            });
+        },
         changeUseBHB() {
             if (this.memberRate > 0) {
                 //会员身份：0普通，1超级群主，3超级合伙人
