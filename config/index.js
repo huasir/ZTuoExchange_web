@@ -11,14 +11,18 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
-            // '/uc':{
-            //     target: 'http://172.24.102.98:6001',
-            //     secure: false
-            // },
-            // '/market':{
-            //     target: 'http://172.24.102.98:6004',
-            //     secure: false
-            // }
+            '/uc':{
+                target: 'http://101.32.36.139:6001',
+                secure: false
+            },
+            '/market':{
+                target: 'http://101.32.11.45:6004',
+                secure: false
+            },
+            '/exchange':{
+                target: 'http://101.32.36.139:6003',
+                secure: false
+            }
         },
 
         // Various Dev Server settings

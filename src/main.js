@@ -19,7 +19,8 @@ Vue.use(vueResource);
 Vue.use(VueI18n);
 
 
-Vue.prototype.host = "http://101.32.36.139:28080"; // 第一套
+// Vue.prototype.host = "http://localhost:3000"; // 第一套 本地开发
+Vue.prototype.host = "http://101.32.11.45"; // 第一套  服务器开发
 
 Vue.prototype.api = Api;
 Vue.http.options.credentials = true;

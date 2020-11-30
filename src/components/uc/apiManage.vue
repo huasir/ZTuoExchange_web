@@ -14,7 +14,8 @@
                 <Input v-model="formItem.bindIp"></Input>
               </FormItem>
             </Form>
-            <Button type="primary" @click="codeVerify">{{$t('apiAdmin.create')}}</Button>
+            <Button type="primary" @click="make">{{$t('apiAdmin.create')}}</Button>
+<!--            <Button type="primary" @click="codeVerify">{{$t('apiAdmin.create')}}</Button>-->
           </div>
           <div class="prompt">
             <p style="color:#515a6e; font-weight: 600;">{{$t('apiAdmin.hint')}}</p>
